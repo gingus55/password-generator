@@ -14,10 +14,20 @@ function writePassword() {
 generateBtn.addEventListener("click", writePassword);
 
 
-function generatePassword{
+function generatePassword(){
   //all my code needs to go here
+  //this is to get my criteria
+  function getCriteria(){
+    const passwordLength = Number(window.prompt("Choose a password length", ""));
+
+  }
+
+
+  //these are my criteria strings
   var lowerCase="abcdefghijklmnopqrstuvwxyz";
   var upperCase="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   var numeric="0123456789";
   var specialChars="" !"#$%&'()*+,-./:;<=>?@[\]^_`{|}~";
+
+
 }
