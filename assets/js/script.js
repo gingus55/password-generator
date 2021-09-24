@@ -16,4 +16,8 @@ generateBtn.addEventListener("click", writePassword);
 
 function generatePassword{
   //all my code needs to go here
+  var lowerCase="abcdefghijklmnopqrstuvwxyz";
+  var upperCase="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  var numeric="0123456789";
+  var specialChars="" !"#$%&'()*+,-./:;<=>?@[\]^_`{|}~";
 }
