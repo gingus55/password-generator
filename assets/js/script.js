@@ -13,11 +13,13 @@ function writePassword() {
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
+//my code starts here - decided for get criteria to be outside of main function for ease of reading
+
 function getCriteria(){
   const passwordLength = Number(window.prompt("Choose a password length", ""));
   //I need to check here that the input is in the range
   if(passwordLength>=8 && passwordLength<=128){
-    
+
     const useLowercase = confirm("Would you like to include lower case?");
 
     const useUppercase = confirm("Would you like to use upper case?");
@@ -30,8 +32,6 @@ function getCriteria(){
     alert("Password length must be between 8 and 128, thank you");
     
   }
-
-  
 
   return
 }
