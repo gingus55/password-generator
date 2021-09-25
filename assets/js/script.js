@@ -15,14 +15,23 @@ generateBtn.addEventListener("click", writePassword);
 
 function getCriteria(){
   const passwordLength = Number(window.prompt("Choose a password length", ""));
+  //I need to check here that the input is in the range
+  if(passwordLength>=8 && passwordLength<=128){
+    
+    const useLowercase = confirm("Would you like to include lower case?");
+
+    const useUppercase = confirm("Would you like to use upper case?");
   
-  const useLowercase = confirm("Would you like to include lower case?");
+    const useNumeric = confirm("Would you like to include numbers?");
+  
+    const useSpecialchars= confirm("Would you like to include special characters?");
+  
+  } else {
+    alert("Password length must be between 8 and 128, thank you");
+    
+  }
 
-  const useUppercase = confirm("Would you like to use upper case?");
-
-  const useNumeric = confirm("Would you like to include numbers?");
-
-  const useSpecialchars= confirm("Would you like to include special characters?");
+  
 
   return
 }
