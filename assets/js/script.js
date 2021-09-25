@@ -130,10 +130,10 @@ const getCriteria = function () {
 
     // at this point I need to see that not all have been answered false
     if (
-      useLowercase === false &&
-      useUppercase === false &&
-      useNumeric === false &&
-      useSpecialCharacters === false
+      !useLowercase &&
+      !useUppercase &&
+      !useNumeric &&
+      !useSpecialCharacters
     ) {
       alert("You need to choose something to be in your password!");
     } else {
