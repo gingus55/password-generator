@@ -79,7 +79,7 @@ var numeric = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 // var specialChars = [" ", "!", '"', "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", ":", ";", "<", "=", ">", "?","@", "[", "\", ']', "^" , "_", "`", "{", "|", "}", "~"];
 
 // get criteria function
-const getCriteria = function () {
+function getCriteria() {
   const passwordLength = Number(window.prompt("Choose a password length", ""));
   //I need to check here that the input is in the range
   if (passwordLength >= 8 && passwordLength <= 128) {
@@ -103,7 +103,7 @@ const getCriteria = function () {
       alert("You need to choose something to be in your password!");
     } else {
       // this sets the object 'criteria' for my output
-      var criteria = {
+      criteria = {
         length: passwordLength,
         lower: useLowercase,
         upper: useUppercase,
@@ -111,15 +111,11 @@ const getCriteria = function () {
         special: useSpecialCharacters,
       };
     }
-    console.log(criteria);
     return criteria;
   } else {
     alert("Password length must be between 8 and 128, thank you");
   }
 }
-
-// need criteria for use in other functions
-// var criteria = criteria;
 
 // select random characters
 const getRandom = function () {
@@ -139,30 +135,28 @@ const getRandom = function () {
   const randomIndex = Math.floor(Math.random() * validValues.length);
   const randomType = validValues[randomIndex];
   const randomSelector = Math.floor(Math.random() * randomType.length);
-  const randomCharacter = validValues[randomIndex,randomSelector];
+  const randomCharacter = validValues[(randomIndex, randomSelector)];
 
   return randomCharacter;
-}
+};
 
 // password generation
-const passwordGenerate = function(){
-// my empty password string
-const myPassword ="";
-for(i=0;i<criteria.length;i++){
-const randomCharacter=getRandom();
-myPassword += randomCharacter;
-}
-return myPassword;
-}
+const passwordGenerate = function () {
+  // my empty password string
+  var myPassword = "";
+  for (i = 0; i < criteria.length; i++) {
+    const randomCharacter = getRandom();
+    myPassword += randomCharacter;
+  }
+  return myPassword;
+};
 
 // Start of my main function
 function generatePassword() {
   //all my code needs to go here
-  //this is to get my criteria
   getCriteria();
 
   passwordGenerate();
-  
-  
+
   return;
 }
