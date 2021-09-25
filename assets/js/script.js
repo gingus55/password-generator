@@ -193,7 +193,7 @@ const passwordGenerate = function (criteria) {
 
 // Start of my main function
 function generatePassword() {
-  //all my code needs to go here
+  //main order of code
   const criteria = getCriteria();
 
   const myPassword = passwordGenerate(criteria);
