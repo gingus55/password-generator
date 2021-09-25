@@ -138,7 +138,7 @@ const getCriteria = function () {
       alert("You need to choose something to be in your password!");
     } else {
       // this sets the object 'criteria' for my output
-      criteria = {
+      var criteria = {
         length: passwordLength,
         lower: useLowercase,
         upper: useUppercase,
@@ -184,7 +184,7 @@ const getRandom = function (criteria) {
 const passwordGenerate = function (criteria) {
   // my empty password string
   var myPassword = "";
-  for (i = 0; i < criteria.length; i++) {
+  for (var i = 0; i < criteria.length; i++) {
     const randomCharacter = getRandom(criteria);
     myPassword += randomCharacter;
   }
@@ -203,3 +203,5 @@ function generatePassword() {
     return "";
   }
 }
+
+
