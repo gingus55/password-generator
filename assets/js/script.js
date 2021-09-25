@@ -115,6 +115,7 @@ var specialChars = [
 // get criteria function
 const getCriteria = function () {
   const passwordLength = Number(window.prompt("Choose a password length", ""));
+
   //I need to check here that the input is in the range
   if (passwordLength >= 8 && passwordLength <= 128) {
     var useLowercase = confirm("Would you like to include lower case?");
@@ -155,6 +156,7 @@ const getCriteria = function () {
 const getRandom = function (criteria) {
   // my empty array
   var validValues = [];
+
   // given criteria add relevant choices
   if (criteria.lower) {
     validValues.push(lowerCase);
@@ -175,9 +177,6 @@ const getRandom = function (criteria) {
   const randomSelector = Math.floor(Math.random() * randomType.length);
   var randomCharacter = validValues[randomIndex][randomSelector];
 
-  // console.log(randomIndex);
-  // console.log(randomSelector);
-  // console.log(randomCharacter);
   return randomCharacter;
 };
 
