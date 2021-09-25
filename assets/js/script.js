@@ -135,9 +135,13 @@ const getRandom = function () {
   const randomIndex = Math.floor(Math.random() * validValues.length);
   const randomType = validValues[randomIndex];
   const randomSelector = Math.floor(Math.random() * randomType.length);
-  const randomCharacter = validValues[(randomIndex, randomSelector)];
+  var randomCharacter = validValues[(randomIndex, randomSelector)];
 
+  console.log(randomIndex);
+  console.log(randomSelector);
+  console.log(randomCharacter);
   return randomCharacter;
+  
 };
 
 // password generation
