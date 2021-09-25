@@ -113,7 +113,7 @@ var specialChars = [
 ];
 
 // get criteria function
-function getCriteria() {
+const getCriteria = function () {
   const passwordLength = Number(window.prompt("Choose a password length", ""));
   //I need to check here that the input is in the range
   if (passwordLength >= 8 && passwordLength <= 128) {
@@ -149,10 +149,10 @@ function getCriteria() {
   } else {
     alert("Password length must be between 8 and 128, thank you");
   }
-}
+};
 
 // select random characters
-const getRandom = function () {
+const getRandom = function (criteria) {
   // my empty array
   var validValues = [];
   // given criteria add relevant choices
@@ -182,11 +182,11 @@ const getRandom = function () {
 };
 
 // password generation
-const passwordGenerate = function () {
+const passwordGenerate = function (criteria) {
   // my empty password string
   var myPassword = "";
   for (i = 0; i < criteria.length; i++) {
-    const randomCharacter = getRandom();
+    const randomCharacter = getRandom(criteria);
     myPassword += randomCharacter;
   }
   return myPassword;
@@ -195,9 +195,9 @@ const passwordGenerate = function () {
 // Start of my main function
 function generatePassword() {
   //all my code needs to go here
-  getCriteria();
+  const criteria = getCriteria();
 
-  passwordGenerate();
+  const myPassword = passwordGenerate(criteria);
 
   return myPassword;
 }
