@@ -16,13 +16,13 @@ generateBtn.addEventListener("click", writePassword);
 function getCriteria(){
   const passwordLength = Number(window.prompt("Choose a password length", ""));
   
-  const useLowercase = Boolean(window.prompt("Would you like to use lower case?", ));
+  const useLowercase = confirm("Would you like to include lower case?");
 
-  const useUppercase = Boolean(window.prompt("Would you like to use upper case?", ));
+  const useUppercase = confirm("Would you like to use upper case?");
 
-  const useNumeric = Boolean(window.prompt("Would you like to include numbers?", ));
+  const useNumeric = confirm("Would you like to include numbers?");
 
-  const useSpecialchars= Boolean(window.prompt("Would you like to include special characters?", ));
+  const useSpecialchars= confirm("Would you like to include special characters?");
 
   return
 }
