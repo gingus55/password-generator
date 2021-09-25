@@ -195,8 +195,11 @@ const passwordGenerate = function (criteria) {
 function generatePassword() {
   //main order of code
   const criteria = getCriteria();
+  if (criteria !== undefined) {
+    const myPassword = passwordGenerate(criteria);
 
-  const myPassword = passwordGenerate(criteria);
-
-  return myPassword;
+    return myPassword;
+  } else {
+    return "";
+  }
 }
