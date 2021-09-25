@@ -76,7 +76,41 @@ var upperCase = [
 
 var numeric = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 
-// var specialChars = [" ", "!", '"', "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", ":", ";", "<", "=", ">", "?","@", "[", "\", ']', "^" , "_", "`", "{", "|", "}", "~"];
+var specialChars = [
+  " ",
+  "!",
+  '"',
+  "#",
+  "$",
+  "%",
+  "&",
+  "'",
+  "(",
+  ")",
+  "*",
+  "+",
+  ",",
+  "-",
+  ".",
+  "/",
+  ":",
+  ";",
+  "<",
+  "=",
+  ">",
+  "?",
+  "@",
+  "[",
+  "\\",
+  "]",
+  "^",
+  "_",
+  "`",
+  "{",
+  "|",
+  "}",
+  "~",
+];
 
 // get criteria function
 function getCriteria() {
@@ -131,17 +165,20 @@ const getRandom = function () {
   if (criteria.numbers) {
     validValues.push(numeric);
   }
+  if (criteria.special) {
+    validValues.push(specialChars);
+  }
+
   // randomly generating numbers
   const randomIndex = Math.floor(Math.random() * validValues.length);
   const randomType = validValues[randomIndex];
   const randomSelector = Math.floor(Math.random() * randomType.length);
-  var randomCharacter = validValues[(randomIndex, randomSelector)];
+  var randomCharacter = validValues[randomIndex][randomSelector];
 
-  console.log(randomIndex);
-  console.log(randomSelector);
-  console.log(randomCharacter);
+  // console.log(randomIndex);
+  // console.log(randomSelector);
+  // console.log(randomCharacter);
   return randomCharacter;
-  
 };
 
 // password generation
@@ -162,5 +199,5 @@ function generatePassword() {
 
   passwordGenerate();
 
-  return;
+  return myPassword;
 }
