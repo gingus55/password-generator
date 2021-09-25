@@ -75,6 +75,7 @@ var upperCase = [
 ];
 
 var numeric = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+
 // var specialChars = [" ", "!", '"', "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", ":", ";", "<", "=", ">", "?","@", "[", "\", ']', "^" , "_", "`", "{", "|", "}", "~"];
 
 // get criteria function
@@ -101,6 +102,7 @@ const getCriteria = function () {
     ) {
       alert("You need to choose something to be in your password!");
     } else {
+      // this sets the object 'criteria' for my output
       var criteria = {
         length: passwordLength,
         lower: useLowercase,
@@ -114,33 +116,44 @@ const getCriteria = function () {
   } else {
     alert("Password length must be between 8 and 128, thank you");
   }
-};
+}
 
 // need criteria for use in other functions
-var criteria = criteria;
+// var criteria = criteria;
 
 // select random characters
-const getRandom = function(){
+const getRandom = function () {
   // my empty array
-  const validValues = [];
+  var validValues = [];
   // given criteria add relevant choices
-  if (criteria.lower){
+  if (criteria.lower) {
     validValues.push(lowerCase);
   }
-  if(criteria.upper){
+  if (criteria.upper) {
     validValues.push(upperCase);
   }
-  if(criteria.numbers){
+  if (criteria.numbers) {
     validValues.push(numeric);
   }
-
-  
   // randomly generating numbers
-  const randomType = Math.floor(Math.random() * validValues.length);
-  const randomValue = validValues[randomType];
-  return randomValue;
-};
+  const randomIndex = Math.floor(Math.random() * validValues.length);
+  const randomType = validValues[randomIndex];
+  const randomSelector = Math.floor(Math.random() * randomType.length);
+  const randomCharacter = validValues[randomIndex,randomSelector];
 
+  return randomCharacter;
+}
+
+// password generation
+const passwordGenerate = function(){
+// my empty password string
+const myPassword ="";
+for(i=0;i<criteria.length;i++){
+const randomCharacter=getRandom();
+myPassword += randomCharacter;
+}
+return myPassword;
+}
 
 // Start of my main function
 function generatePassword() {
@@ -148,7 +161,7 @@ function generatePassword() {
   //this is to get my criteria
   getCriteria();
 
-
+  passwordGenerate();
   
   
   return;
