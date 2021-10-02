@@ -16,7 +16,7 @@ generateBtn.addEventListener("click", writePassword);
 //my code starts here
 
 //these are my criteria arrays
-var lowerCase = [
+const lowerCase = [
   "a",
   "b",
   "c",
@@ -45,7 +45,7 @@ var lowerCase = [
   "z",
 ];
 
-var upperCase = [
+const upperCase = [
   "A",
   "B",
   "C",
@@ -74,9 +74,9 @@ var upperCase = [
   "Z",
 ];
 
-var numeric = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+const numeric = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 
-var specialChars = [
+const specialChars = [
   " ",
   "!",
   '"',
@@ -114,17 +114,17 @@ var specialChars = [
 
 // get criteria function
 const getCriteria = function () {
-  const passwordLength = Number(window.prompt("Choose a password length", ""));
+  const passwordLength = Number(prompt("Choose a password length", ""));
 
   //I need to check here that the input is in the range
   if (passwordLength >= 8 && passwordLength <= 128) {
-    var useLowercase = confirm("Would you like to include lower case?");
+    const useLowercase = confirm("Would you like to include lower case?");
 
-    var useUppercase = confirm("Would you like to use upper case?");
+    const useUppercase = confirm("Would you like to use upper case?");
 
-    var useNumeric = confirm("Would you like to include numbers?");
+    const useNumeric = confirm("Would you like to include numbers?");
 
-    var useSpecialCharacters = confirm(
+    const useSpecialCharacters = confirm(
       "Would you like to include special characters?"
     );
 
@@ -136,9 +136,10 @@ const getCriteria = function () {
       !useSpecialCharacters
     ) {
       alert("You need to choose something to be in your password!");
+      return;
     } else {
       // this sets the object 'criteria' for my output
-      var criteria = {
+      return {
         length: passwordLength,
         lower: useLowercase,
         upper: useUppercase,
@@ -146,16 +147,16 @@ const getCriteria = function () {
         special: useSpecialCharacters,
       };
     }
-    return criteria;
   } else {
     alert("Password length must be between 8 and 128, thank you");
+    return;
   }
 };
 
 // select random characters
 const getRandom = function (criteria) {
   // my empty array
-  var validValues = [];
+  const validValues = [];
 
   // given criteria add relevant choices
   if (criteria.lower) {
@@ -172,10 +173,12 @@ const getRandom = function (criteria) {
   }
 
   // randomly generating numbers
-  const randomIndex = Math.floor(Math.random() * validValues.length);
-  const randomType = validValues[randomIndex];
-  const randomSelector = Math.floor(Math.random() * randomType.length);
-  var randomCharacter = validValues[randomIndex][randomSelector];
+  const randomChoiceIndex = Math.floor(Math.random() * validValues.length);
+  const randomCharactersArray = validValues[randomChoiceIndex];
+  const randomCharacterIndex = Math.floor(
+    Math.random() * randomCharactersArray.length
+  );
+  const randomCharacter = randomCharactersArray[randomCharacterIndex];
 
   return randomCharacter;
 };
@@ -183,8 +186,8 @@ const getRandom = function (criteria) {
 // password generation
 const passwordGenerate = function (criteria) {
   // my empty password string
-  var myPassword = "";
-  for (var i = 0; i < criteria.length; i++) {
+  let myPassword = "";
+  for (let i = 0; i < criteria.length; i++) {
     const randomCharacter = getRandom(criteria);
     myPassword += randomCharacter;
   }
@@ -195,7 +198,7 @@ const passwordGenerate = function (criteria) {
 function generatePassword() {
   //main order of code
   const criteria = getCriteria();
-  if (criteria !== undefined) {
+  if (criteria) {
     const myPassword = passwordGenerate(criteria);
 
     return myPassword;
