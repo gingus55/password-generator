@@ -114,7 +114,9 @@ const specialChars = [
 
 // get criteria function
 const getCriteria = function () {
-  const passwordLength = Number(prompt("Choose a password length", ""));
+  const passwordLength = Number(
+    prompt("Choose a password length between 8-128 characters", "")
+  );
 
   //I need to check here that the input is in the range
   if (passwordLength >= 8 && passwordLength <= 128) {
@@ -135,7 +137,7 @@ const getCriteria = function () {
       !useNumeric &&
       !useSpecialCharacters
     ) {
-      alert("You need to choose something to be in your password!");
+      alert("You need to include at least 1 criteria to be in your password!");
       return;
     } else {
       // this sets the object 'criteria' for my output
